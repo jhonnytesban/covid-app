@@ -1,13 +1,29 @@
-import React from "react";
-import { Pie } from "react-chartjs-2";
+import React, { useState, useEffect } from "react";
+import { Bar } from "react-chartjs-2";
 
-const Graphic = () => {
+const Graphic = ({ info }) => {
+  const [newConfirmed, setNewConfirmed] = useState([]);
+  const [day, setDay] = useState([]);
+
+  useEffect(() => {
+    let cases = [];
+    let today = []
+    if (info.length !== 0) {
+      info.map((el) => {
+        cases.push(el.countries.Spain.today_new_confirmed)
+        setNewConfirmed(cases);
+        today.push(el.countries.Spain.date)
+        setDay(today);
+      });
+    }
+  }, [info]);
+
   const data = {
-    labels: ["Nuevos infectados", "Fallecidos", "Curados"],
+    labels: day,
     datasets: [
       {
-        data: [100, 100, 100],
-        backgroundColor: ["yellow", "red", "green"],
+        data: newConfirmed,
+        backgroundColor: ["#E74C3C", "#9B59B6", "#2980B9", "#16A085", "#F1C40F", "#95A5A6", "#2C3E50"],
       },
     ],
   };
@@ -16,9 +32,15 @@ const Graphic = () => {
   };
 
   return (
-    <div style={{ width: 500 }} className="container-graphic">
-      <Pie data={data} options={option} />
-    </div>
+    <>
+      {info.length !== 0 ? (
+        <div style={{ width: 350 }}>
+          <Bar data={data} options={option} />
+        </div>
+      ) : (
+        <p>Cargando gráfico ...</p>
+      )}
+    </>
   );
 };
 

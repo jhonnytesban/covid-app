@@ -1,13 +1,12 @@
 import React from "react";
 import "./App.css";
-import InfoCovid from "./components/InfoCovid";
+import HomePage from "./pages/HomePage";
 
 function App() {
 
   return (
     <>
-      <h1>Este es el componente App</h1>
-      <InfoCovid/>
+      <HomePage />
     </>
   );
 }

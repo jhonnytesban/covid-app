@@ -1,20 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Pie, Bar, Radar } from 'react-chartjs-2'
 
 const InfoCovid = () => {
   const [infoSpain, setInfoSpain] = useState([])
   const [dateToday, setDate] = useState(null)
 
-  const data  = {
-    labels: ['Nuevos infectados', 'Fallecidos', 'Curados'],
-    datasets: [{
-      data: [infoSpain.today_new_confirmed, infoSpain.today_new_deaths, 100],
-      backgroundColor: ['yellow', 'red', 'green']
-    }]
-  }
-  const option = {
-    responsive: true
-  }
 
   useEffect(() => {
     const fetching = async () => {
@@ -34,13 +23,11 @@ const InfoCovid = () => {
 
   return (
     <>
-      <p>Soy el componente de la informacion</p>
-      {dateToday && <p>{dateToday}</p>}
-      {infoSpain && <p>Hoy se han registrado {infoSpain.today_new_confirmed} casos de covid en España</p>}
-      <div style={{width: 500,}} className="container-graphic">
-        <Pie data={data} options={option}/>
-
-      </div>
+      <h2>Datos de {infoSpain.name_es}</h2>
+      <p>Fecha de hoy {dateToday}</p>
+      <p>Nuevos confirmados: {infoSpain.today_new_confirmed}</p>
+      <p>Fallecidos: {infoSpain.today_new_deaths}</p>
+      <p>Casos activos: {infoSpain.today_new_open_cases}</p>
     </>
   )
 }

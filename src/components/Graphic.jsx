@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
+import  GraphicContainer  from "../styles/GraphicContainer";
 
 const Graphic = ({ info }) => {
   const [newConfirmed, setNewConfirmed] = useState([]);
@@ -34,9 +35,9 @@ const Graphic = ({ info }) => {
   return (
     <>
       {info.length !== 0 ? (
-        <div style={{ width: 350 }}>
+        <GraphicContainer>
           <Bar data={data} options={option} />
-        </div>
+        </GraphicContainer>
       ) : (
         <p>Cargando gráfico ...</p>
       )}

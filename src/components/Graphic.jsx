@@ -10,7 +10,7 @@ const Graphic = ({ info }) => {
     let cases = [];
     let today = []
     if (info.length !== 0) {
-      info.map((el) => {
+      info.forEach((el, i) => {
         cases.push(el.countries.Spain.today_new_confirmed)
         setNewConfirmed(cases);
         today.push(el.countries.Spain.date)

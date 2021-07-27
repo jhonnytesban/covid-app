@@ -1,13 +1,12 @@
 import React from "react";
-import "./App.css";
 import { DateProvider } from "./context/DateToday";
-import HomePage from "./pages/HomePage";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
   return (
     <>
       <DateProvider>
-        <HomePage />
+        <AppRoutes />
       </DateProvider>
     </>
   );

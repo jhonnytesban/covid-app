@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, memo } from 'react'
 import { TodayContext } from '../context/DateToday'
+import { Paragraph } from '../styles/Paragrahph'
+import { Subtitles } from '../styles/Subtitles'
 
-const InfoCovid = () => {
+const InfoCovid = memo(() => {
 
   const { day } = useContext(TodayContext)
 
@@ -25,13 +27,13 @@ const InfoCovid = () => {
 
   return (
     <>
-      <h2>Datos de {infoSpain.name_es}</h2>
-      <p>Fecha de hoy {day}</p>
-      <p>Nuevos confirmados: {infoSpain.today_new_confirmed}</p>
-      <p>Fallecidos: {infoSpain.today_new_deaths}</p>
-      <p>Casos activos: {infoSpain.today_new_open_cases}</p>
+      <Subtitles>Datos de {infoSpain.name_es}</Subtitles>
+      <Paragraph>Fecha de hoy {day}</Paragraph>
+      <Paragraph>Nuevos confirmados: {infoSpain.today_new_confirmed}</Paragraph>
+      <Paragraph>Fallecidos: {infoSpain.today_new_deaths}</Paragraph>
+      <Paragraph>Casos activos: {infoSpain.today_new_open_cases}</Paragraph>
     </>
   )
-}
+})
 
 export default InfoCovid

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { fetchInfoRange } from "../helpers/fecthInfoRange";
 import Graphic from "./Graphic";
 
-const Rangegraphic = () => {
+const Rangegraphic = memo(() => {
   const [infoRange, setInfoRange] = useState([]);
 
   useEffect(() => {
@@ -18,6 +18,6 @@ const Rangegraphic = () => {
       <Graphic info={infoRange}/>
     </>
   );
-};
+})
 
 export default Rangegraphic;

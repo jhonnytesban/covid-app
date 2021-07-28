@@ -6,18 +6,21 @@ const Rangegraphic = memo(() => {
   const [infoRange, setInfoRange] = useState([]);
 
   useEffect(() => {
-    fetchInfoRange('spain')
-      .then((res) =>{ 
-        setInfoRange(res)
-      })
+    fetchInfoRange("spain").then((res) => {
+      setInfoRange(res);
+    });
   }, []);
 
   return (
     <>
       <h2>Rango de contagios</h2>
-      <Graphic info={infoRange}/>
+      {infoRange.length === 0 ? (
+        <p>Cargando...</p>
+      ) : (
+        <Graphic info={infoRange} />
+      )}
     </>
   );
-})
+});
 
 export default Rangegraphic;

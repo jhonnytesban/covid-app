@@ -7,9 +7,10 @@ const Navbar = () => {
 
   return (
     <>
-      <button onClick={() => setIsActive(!isActive)}>X</button>
+      <button onClick={() => setIsActive(!isActive)}>Abrir menú</button>
       <NavStyled isActive={isActive}>
         <MenuStyled>
+          <button onClick={() => setIsActive(!isActive)}>X</button>
           <ItemStyled>
             <LinkStyled to="/">Ir a inicio</LinkStyled>
           </ItemStyled>
@@ -29,6 +30,7 @@ const NavStyled = styled.nav`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
+  top: 0;
   left: ${(props) => (props.isActive === true ? "0" : "100%")};
   transition: all 0.8s;
 `;

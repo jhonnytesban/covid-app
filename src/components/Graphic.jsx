@@ -11,9 +11,13 @@ const Graphic = ({ info }) => {
     let today = []
     if (info.length !== 0) {
       info.forEach((el, i) => {
-        cases.push(el.countries.Spain.today_new_confirmed)
+        const prueba = Object.entries(el.countries)
+        const dateObject = prueba[0][1]
+        const { today_new_confirmed, date } = dateObject
+        console.log(today_new_confirmed)
+        cases.push(today_new_confirmed)
         setNewConfirmed(cases);
-        today.push(el.countries.Spain.date)
+        today.push(date)
         setDay(today);
       });
     }

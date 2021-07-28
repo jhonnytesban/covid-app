@@ -6,7 +6,7 @@ const Rangegraphic = memo(() => {
   const [infoRange, setInfoRange] = useState([]);
 
   useEffect(() => {
-    fetchInfoRange()
+    fetchInfoRange('spain')
       .then((res) =>{ 
         setInfoRange(res)
       })

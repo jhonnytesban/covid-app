@@ -29,7 +29,7 @@ const NavStyled = styled.nav`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
-  left: ${(props) => (props.isActive === true ? "100%" : "0")};
+  left: ${(props) => (props.isActive === true ? "0" : "100%")};
   transition: all 0.8s;
 `;
 

@@ -23,12 +23,20 @@ const Navbar = () => {
   );
 };
 
+const bps = {
+  desktop: '@media screen and (min-width: 800px)'
+}
+
+
 const ButtonMenu = styled.img`
   position: absolute;
   right: ${props => props.isActive === true ?'70%' : '10%'};
   transform: ${props => props.isActive === true ? 'rotate(-90deg)' : 'rotate(0deg)'};
   transition: all .5s;
   z-index: ${props => props.isActive === true ?'100' : '0'};
+  ${bps.desktop} {
+    display: none;
+  }
 `
 
 const NavStyled = styled.nav`
@@ -42,7 +50,13 @@ const NavStyled = styled.nav`
   top: 0;
   left: ${(props) => (props.isActive === true ? "0" : "100%")};
   transition: all .8s;
-`;
+  
+  ${bps.desktop} {
+    background-color: #282d36;
+    position: static;
+    backdrop-filter: blur(0);
+  }
+  `;
 
 const MenuStyled = styled.ul`
   display: flex;
@@ -55,11 +69,23 @@ const MenuStyled = styled.ul`
   height: 100%;
   margin: 0;
   padding: 0;
+  ${bps.desktop} {
+    width: 40%;
+    flex-direction: row;
+    background-color: #282d36;
+  }
 `;
 
 const ItemStyled = styled.li`
   text-decoration: none;
   color: #fff;
+  ${bps.desktop} {
+    margin: 0 10px;
+    transition: all .3s;
+    &:hover {
+      transform: scale(1.2, 1.2);
+    }
+  }
 `;
 const LinkStyled = styled(NavLink)`
   text-decoration: none;

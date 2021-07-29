@@ -11,6 +11,7 @@ const Header = () => {
   );
 };
 
+
 const HeaderStyled = styled.header`
   width: 100%;
   display: flex;

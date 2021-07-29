@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import image from '../assets/menu.svg';
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
 
   return (
     <>
-      <button onClick={() => setIsActive(!isActive)}>Abrir menú</button>
+      <ButtonMenu src={image} isActive={isActive} onClick={() => setIsActive(!isActive)}/>
       <NavStyled isActive={isActive}>
         <MenuStyled>
-          <button onClick={() => setIsActive(!isActive)}>X</button>
           <ItemStyled>
-            <LinkStyled to="/">Ir a inicio</LinkStyled>
+            <LinkStyled to="/" onClick={() => setIsActive(!isActive)}>Ir a inicio</LinkStyled>
           </ItemStyled>
           <ItemStyled>
-            <LinkStyled to="/countries">Información por países</LinkStyled>
+            <LinkStyled to="/countries" onClick={() => setIsActive(!isActive)}>Información por países</LinkStyled>
           </ItemStyled>
         </MenuStyled>
       </NavStyled>
@@ -23,7 +23,16 @@ const Navbar = () => {
   );
 };
 
+const ButtonMenu = styled.img`
+  position: absolute;
+  right: ${props => props.isActive === true ?'70%' : '10%'};
+  transform: ${props => props.isActive === true ? 'rotate(-90deg)' : 'rotate(0deg)'};
+  transition: all .5s;
+  z-index: ${props => props.isActive === true ?'100' : '0'};
+`
+
 const NavStyled = styled.nav`
+  backdrop-filter: ${(props) => (props.isActive === true ? 'blur(10px)' : "blur(0)")};
   display: flex;
   justify-content: flex-end;
   width: 100%;
@@ -32,7 +41,7 @@ const NavStyled = styled.nav`
   position: fixed;
   top: 0;
   left: ${(props) => (props.isActive === true ? "0" : "100%")};
-  transition: all 0.8s;
+  transition: all .8s;
 `;
 
 const MenuStyled = styled.ul`

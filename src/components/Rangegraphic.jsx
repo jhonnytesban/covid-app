@@ -1,5 +1,6 @@
 import React, { useState, useEffect, memo } from "react";
 import { fetchInfoRange } from "../helpers/fecthInfoRange";
+import { Subtitles } from "../styles/Subtitles";
 import Graphic from "./Graphic";
 
 const Rangegraphic = memo(() => {
@@ -13,7 +14,7 @@ const Rangegraphic = memo(() => {
 
   return (
     <>
-      <h2>Rango de contagios</h2>
+      <Subtitles>Contagios por día del mes</Subtitles>
       {infoRange.length === 0 ? (
         <p>Cargando...</p>
       ) : (

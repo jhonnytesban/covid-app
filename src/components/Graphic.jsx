@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import GraphicContainer from "../styles/GraphicContainer";
 
 const Graphic = ({ info }) => {
@@ -36,8 +36,11 @@ const Graphic = ({ info }) => {
           "#95A5A6",
           "#2C3E50",
         ],
+        borderColor: '#fff',
+        pointRadius: 4,
       },
     ],
+    
   };
   const option = {
     responsive: true,
@@ -47,7 +50,7 @@ const Graphic = ({ info }) => {
     <>
       {info.length !== 0 ? (
         <GraphicContainer>
-          <Bar data={data} options={option} />
+          <Line data={data} options={option} />
         </GraphicContainer>
       ) : (
         <></>

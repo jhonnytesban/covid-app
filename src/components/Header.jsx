@@ -5,12 +5,11 @@ import Navbar from "./Navbar";
 const Header = () => {
   return (
     <HeaderStyled>
-      <TitleHeader>InfoCovid</TitleHeader>
+      <TitleHeader>InfoCovid-19</TitleHeader>
       <Navbar />
     </HeaderStyled>
   );
 };
-
 
 const HeaderStyled = styled.header`
   width: 100%;
@@ -18,7 +17,7 @@ const HeaderStyled = styled.header`
   justify-content: space-between;
   align-items: center;
   background-color: #282d36;
-  box-shadow: 0 5px 5px black;
+  box-shadow: 0 2px 5px black;
   box-sizing: border-box;
   position: fixed;
   padding: 15px 10%;
@@ -26,6 +25,8 @@ const HeaderStyled = styled.header`
 `;
 
 const TitleHeader = styled.h1`
+  font-family: "Source Sans Pro";
+  font-size: 18px;
   color: #ddd;
   margin: 0;
 `;

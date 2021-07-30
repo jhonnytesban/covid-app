@@ -52,6 +52,8 @@ const NavStyled = styled.nav`
   transition: all .8s;
   
   ${bps.desktop} {
+    display: block;
+    width: 85%;
     background-color: #282d36;
     position: static;
     backdrop-filter: blur(0);
@@ -70,8 +72,9 @@ const MenuStyled = styled.ul`
   margin: 0;
   padding: 0;
   ${bps.desktop} {
-    width: 40%;
+    width: 100%;
     flex-direction: row;
+    justify-content: flex-end;
     background-color: #282d36;
   }
 `;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, memo } from "react";
 import { fetchInfoRange } from "../helpers/fecthInfoRange";
-import { Subtitles } from "../styles/Subtitles";
 import Graphic from "./Graphic";
+import Spinner from "./Spinner";
 
 const Rangegraphic = memo(() => {
   const [infoRange, setInfoRange] = useState([]);
@@ -14,9 +14,8 @@ const Rangegraphic = memo(() => {
 
   return (
     <>
-      <Subtitles>Contagios por día del mes</Subtitles>
       {infoRange.length === 0 ? (
-        <p>Cargando...</p>
+        <Spinner />
       ) : (
         <Graphic info={infoRange} />
       )}

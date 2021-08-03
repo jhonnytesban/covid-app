@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const Subtitles = styled.h2`
   text-align: center;
-  color: #fff;
+  color: hsla(0,0%,100%,0.75);
   font-family: 'Source Sans Pro';
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 1px;
 `

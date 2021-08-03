@@ -7,7 +7,7 @@ const InfoCountries = () => {
   return (
     <>
       <MainStyled>
-        <Titles>Soy el componente de Información por países</Titles>
+        <Titles>Busque la información por países</Titles>
         <SearchCountries />
       </MainStyled>
     </>

@@ -2,10 +2,11 @@ import React, { useState, useEffect, useContext, memo } from "react";
 import { DateOrganizedContext } from "../context/DateOrganized";
 import { TodayContext } from "../context/DateToday";
 import { Paragraph } from "../styles/Paragrahph";
+import Section from "../styles/Section";
 
 const InfoCovid = memo(() => {
   const { day } = useContext(TodayContext);
-  const { dateCorrect } = useContext(DateOrganizedContext)
+  const { dateCorrect } = useContext(DateOrganizedContext);
 
   const [infoSpain, setInfoSpain] = useState([]);
 
@@ -28,10 +29,14 @@ const InfoCovid = memo(() => {
 
   return (
     <>
-      <Paragraph>Fecha de hoy: {dateCorrect}</Paragraph>
-      <Paragraph>Nuevos confirmados: {infoSpain.today_new_confirmed}</Paragraph>
-      <Paragraph>Fallecidos: {infoSpain.today_new_deaths}</Paragraph>
-      <Paragraph>Casos activos: {infoSpain.today_new_open_cases}</Paragraph>
+      <Section>
+        <Paragraph>Fecha de hoy: {dateCorrect}</Paragraph>
+        <Paragraph>
+          Nuevos confirmados: {infoSpain.today_new_confirmed}
+        </Paragraph>
+        <Paragraph>Fallecidos: {infoSpain.today_new_deaths}</Paragraph>
+        <Paragraph>Casos activos: {infoSpain.today_new_open_cases}</Paragraph>
+      </Section>
     </>
   );
 });

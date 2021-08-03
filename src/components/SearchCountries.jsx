@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Graphic from "./Graphic";
 import { fetchInfoRange } from "../helpers/fecthInfoRange";
+import Spinner from "./Spinner";
 
 const SearchCountries = () => {
   const [infoCountry, setInfoCountry] = useState([]);
@@ -28,7 +29,7 @@ const SearchCountries = () => {
         />
         <input type="submit" value="Buscar" />
       </form>
-      {isLoading ? <p>cargando...</p> : <Graphic info={infoCountry} />}
+      {isLoading ? <Spinner /> : <Graphic info={infoCountry} />}
     </>
   );
 };

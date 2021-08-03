@@ -6,6 +6,8 @@ const Titles = styled.h1`
   font-weight: 200;
   text-align: center;
   margin-top: 0;
+  margin-bottom: 40px;
+  padding: 0 20px;
 `;
 
 export default Titles;

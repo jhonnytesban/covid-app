@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
+import styled from "styled-components";
 import GraphicContainer from "../styles/GraphicContainer";
-import { Paragraph } from "../styles/Paragrahph";
+import { Subtitles } from "../styles/Subtitles";
 
 const Graphic = ({ info }) => {
   const [newConfirmed, setNewConfirmed] = useState([]);
@@ -16,7 +17,6 @@ const Graphic = ({ info }) => {
       info.forEach((el, i) => {
         const prueba = Object.entries(el.countries);
         const dateObject = prueba[0][1];
-        console.log(dateObject);
         const { today_new_confirmed, date, today_new_deaths } = dateObject;
         cases.push(today_new_confirmed);
         setNewConfirmed(cases);
@@ -24,7 +24,11 @@ const Graphic = ({ info }) => {
         setDay(today);
         dead.push(today_new_deaths);
         setNewDead(dead);
+        
       });
+      cases.pop()
+      today.pop()
+      dead.pop()
     }
   }, [info]);
 
@@ -74,12 +78,16 @@ const Graphic = ({ info }) => {
     <>
       {info.length !== 0 ? (
         <>
-          <GraphicContainer>
-            <Line data={data} options={option} />
-          </GraphicContainer>
-          <GraphicContainer>
-            <Line data={data2} options={option} />
-          </GraphicContainer>
+          <GridContainer>
+            <GraphicContainer>
+            <Subtitles>Contagios por dia</Subtitles>
+              <Line data={data} options={option} />
+            </GraphicContainer>
+            <GraphicContainer>
+            <Subtitles>Muertes por dia</Subtitles>
+              <Line data={data2} options={option} />
+            </GraphicContainer>
+          </GridContainer>
         </>
       ) : (
         <></>
@@ -87,5 +95,11 @@ const Graphic = ({ info }) => {
     </>
   );
 };
+
+const GridContainer = styled.section`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin-bottom: 40px;
+`;
 
 export default Graphic;

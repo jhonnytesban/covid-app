@@ -7,5 +7,6 @@ export const fetchInfoRange = async (countries) => {
   const data = await res.json();
   const { dates } = await data
   const dataArray = await Object.values(dates)
+  console.log(dataArray)
   return dataArray
 };

@@ -4,7 +4,7 @@ import Graphic from "./Graphic";
 import Spinner from "./Spinner";
 import { fetchInfoRange } from "../helpers/fecthInfoRange";
 import { translation } from "../helpers/TranslationCountry";
-import {Search} from '../assets/search.png';
+import Search from '../assets/search.svg';
 
 const SearchCountries = () => {
   const [infoCountry, setInfoCountry] = useState([]);

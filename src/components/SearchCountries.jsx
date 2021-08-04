@@ -13,8 +13,10 @@ const SearchCountries = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    text.toLowerCase();
-    const country = translation(text);
+    console.log(text)
+    const textLow = text.toLowerCase();
+    console.log(textLow)
+    const country = translation(textLow);
     setIsLoading(true);
     fetchInfoRange(country).then((res) => {
       setInfoCountry(res);

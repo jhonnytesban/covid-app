@@ -8,6 +8,7 @@ const Graphic = ({ info }) => {
   const [newConfirmed, setNewConfirmed] = useState([]);
   const [newDead, setNewDead] = useState([]);
   const [day, setDay] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     let cases = [];
@@ -16,19 +17,22 @@ const Graphic = ({ info }) => {
     if (info.length !== 0) {
       info.forEach((el, i) => {
         const prueba = Object.entries(el.countries);
-        const dateObject = prueba[0][1];
-        const { today_new_confirmed, date, today_new_deaths } = dateObject;
-        cases.push(today_new_confirmed);
-        setNewConfirmed(cases);
-        today.push(date);
-        setDay(today);
-        dead.push(today_new_deaths);
-        setNewDead(dead);
-        
+        if (prueba.length !== 0) {
+          setError(true);
+          const dateObject = prueba[0][1];
+          setError(dateObject);
+          const { today_new_confirmed, date, today_new_deaths } = dateObject;
+          cases.push(today_new_confirmed);
+          setNewConfirmed(cases);
+          today.push(date);
+          setDay(today);
+          dead.push(today_new_deaths);
+          setNewDead(dead);
+        }
       });
-      cases.pop()
-      today.pop()
-      dead.pop()
+      cases.pop();
+      today.pop();
+      dead.pop();
     }
   }, [info]);
 
@@ -76,22 +80,20 @@ const Graphic = ({ info }) => {
 
   return (
     <>
-      {info.length !== 0 ? (
+      {error !== null && (
         <>
           <GridContainer>
             <GraphicContainer>
-            <Subtitles>Contagios por dia</Subtitles>
+              <Subtitles>Contagios por dia</Subtitles>
               <Line data={data} options={option} />
             </GraphicContainer>
             <GraphicContainer>
-            <Subtitles>Muertes por dia</Subtitles>
+              <Subtitles>Muertes por dia</Subtitles>
               <Line data={data2} options={option} />
             </GraphicContainer>
           </GridContainer>
         </>
-      ) : (
-        <></>
-      )}
+      ) }
     </>
   );
 };

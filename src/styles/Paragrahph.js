@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { bps } from "../components/Navbar";
+import { bps } from "./BreakPoints";
 
 export const Paragraph = styled.p`
   font-family: "Source Sans Pro";
@@ -9,6 +9,6 @@ export const Paragraph = styled.p`
   text-align: left;
   color: hsla(0, 0%, 100%, 0.75);
   ${bps.desktop} {
-    text-align: center;
+    text-align: justify;
   }
 `;

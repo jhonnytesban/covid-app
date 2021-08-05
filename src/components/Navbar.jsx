@@ -27,7 +27,12 @@ const Navbar = () => {
           </ItemStyled>
           <ItemStyled>
             <LinkStyled to="/countries" onClick={() => setIsActive(!isActive)}>
-              Búsqueda de Países
+              Búsqueda por países
+            </LinkStyled>
+          </ItemStyled>
+          <ItemStyled>
+            <LinkStyled to="/countries-by-range" onClick={() => setIsActive(!isActive)}>
+              Búsqueda por países y fecha 
             </LinkStyled>
           </ItemStyled>
         </MenuStyled>

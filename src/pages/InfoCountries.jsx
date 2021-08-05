@@ -7,7 +7,7 @@ const InfoCountries = () => {
   return (
     <>
       <MainStyled>
-        <Titles>Busque la información por países</Titles>
+        <Titles>Búsqueda de información por países</Titles>
         <SearchCountries />
       </MainStyled>
     </>

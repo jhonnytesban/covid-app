@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import Graphic from "./Graphic";
 import Spinner from "./Spinner";
 import { fetchInfoRange } from "../helpers/fecthInfoRange";
 import { translation } from "../helpers/TranslationCountry";
 import Search from '../assets/search.svg';
+import { FormStyled, InputSubmit, InputText } from "../styles/Search";
 
 const SearchCountries = () => {
   const [infoCountry, setInfoCountry] = useState([]);
@@ -13,9 +13,7 @@ const SearchCountries = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(text)
     const textLow = text.toLowerCase();
-    console.log(textLow)
     const country = translation(textLow);
     setIsLoading(true);
     fetchInfoRange(country).then((res) => {
@@ -41,24 +39,5 @@ const SearchCountries = () => {
   );
 };
 
-const FormStyled = styled.form`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const InputText = styled.input`
-  background-color: rgba(255, 255, 255, 0);
-  border: none;
-  border-bottom: 1px solid #fff;
-  margin: 0 10px;
-  color: #fff;
-  &::placeholder {
-    color: #fff;
-  }
-`;
-
-const InputSubmit = styled.input`
-  cursor: pointer;
-`
 
 export default SearchCountries;

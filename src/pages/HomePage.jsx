@@ -8,7 +8,7 @@ const HomePage = () => {
   return (
     <>
       <MainStyled>
-        <Titles>Covid 19 en España</Titles>
+        <Titles>Datos del Covid 19 en España</Titles>
         <InfoCovid />
         <Rangegraphic />
       </MainStyled>

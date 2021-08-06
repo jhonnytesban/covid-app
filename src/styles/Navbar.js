@@ -40,13 +40,14 @@ export const MenuStyled = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   list-style: none;
   background-color: black;
   width: 60%;
   height: 100%;
   margin: 0;
-  padding: 10px 0;
+  padding: 10px 5%;
+  box-sizing: border-box;
   ${bps.desktop} {
     width: 100%;
     flex-direction: row;

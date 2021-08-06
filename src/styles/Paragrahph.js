@@ -3,7 +3,7 @@ import { bps } from "./BreakPoints";
 
 export const Paragraph = styled.p`
   font-family: "Source Sans Pro";
-  font-size: 18px;
+  font-size: 1rem;
   line-height: 28px;
   letter-spacing: 1px;
   text-align: left;

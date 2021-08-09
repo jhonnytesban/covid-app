@@ -1,16 +1,10 @@
-import React, { useState, useEffect, memo } from "react";
-import { fetchInfoRange } from "../helpers/fecthInfoRange";
+import React from "react";
+import useInfoRange from "../hooks/useInfoRange";
 import Graphic from "./Graphic";
 import Spinner from "./Spinner";
 
-const Rangegraphic = memo(() => {
-  const [infoRange, setInfoRange] = useState([]);
-
-  useEffect(() => {
-    fetchInfoRange("spain").then((res) => {
-      setInfoRange(res);
-    });
-  }, []);
+const Rangegraphic = () => {
+  const {infoRange} = useInfoRange('spain')
 
   return (
     <>
@@ -21,6 +15,6 @@ const Rangegraphic = memo(() => {
       )}
     </>
   );
-});
+};
 
 export default Rangegraphic;

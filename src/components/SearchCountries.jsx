@@ -1,26 +1,26 @@
 import React, { useState } from "react";
 import Graphic from "./Graphic";
 import Spinner from "./Spinner";
-import { fetchInfoRange } from "../helpers/fecthInfoRange";
 import { translation } from "../helpers/TranslationCountry";
-import Search from '../assets/search.svg';
+import Search from "../assets/search.svg";
 import { FormStyled, InputSubmit, InputText } from "../styles/Search";
+import useInfoRange from "../hooks/useInfoRange";
 
 const SearchCountries = () => {
-  const [infoCountry, setInfoCountry] = useState([]);
+  const { infoRange, handleCountry } = useInfoRange();
+
   const [text, setText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    setIsLoading(true);
     e.preventDefault();
     const textLow = text.toLowerCase();
     const country = translation(textLow);
-    setIsLoading(true);
-    fetchInfoRange(country).then((res) => {
-      setInfoCountry(res);
-      setText("");
+    handleCountry(country);
+    setTimeout(() => {
       setIsLoading(false);
-    });
+    }, 100);
   };
 
   return (
@@ -32,12 +32,11 @@ const SearchCountries = () => {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <InputSubmit type="image" title="Buscar" src={Search}/>
+        <InputSubmit type="image" title="Buscar" src={Search} />
       </FormStyled>
-      {isLoading ? <Spinner /> : <Graphic info={infoCountry} />}
+      {isLoading ? <Spinner /> : <Graphic info={infoRange} />}
     </>
   );
 };
-
 
 export default SearchCountries;

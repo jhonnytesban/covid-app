@@ -1,9 +1,14 @@
 import { useState, useEffect, useContext } from "react";
 import { TodayContext } from "../context/DateToday";
 
-const useInfoRange = (countries) => {
+const useInfoRange = (initialValue) => {
   const { day } = useContext(TodayContext);
   const [infoRange, setInfoRange] = useState([]);
+  const [countries, setCountries] = useState(initialValue)
+
+  const handleCountry = (country) => {
+    setCountries(country)
+  }
 
   useEffect(() => {
     const fetchInfoRange = async () => {
@@ -20,7 +25,7 @@ const useInfoRange = (countries) => {
     };
     fetchInfoRange();
   }, [day, countries]);
-  return { infoRange };
+  return { infoRange, handleCountry };
 };
 
 export default useInfoRange;

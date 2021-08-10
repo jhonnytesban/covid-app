@@ -1,26 +1,21 @@
 import React, { useState } from "react";
+import useInfoRange from "../hooks/useInfoRange";
+import { translation } from "../helpers/TranslationCountry";
 import Graphic from "./Graphic";
 import Spinner from "./Spinner";
-import { translation } from "../helpers/TranslationCountry";
-import Search from "../assets/search.svg";
 import { FormStyled, InputSubmit, InputText } from "../styles/Search";
-import useInfoRange from "../hooks/useInfoRange";
+import Search from "../assets/search.svg";
 
 const SearchCountries = () => {
-  const { infoRange, handleCountry } = useInfoRange();
+  const { infoRange, handleCountry, isLoading } = useInfoRange();
 
   const [text, setText] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
-    setIsLoading(true);
     e.preventDefault();
     const textLow = text.toLowerCase();
     const country = translation(textLow);
     handleCountry(country);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 100);
   };
 
   return (

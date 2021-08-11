@@ -1,9 +1,9 @@
-import { useState, useEffect, useContext } from 'react'
-import { TodayContext } from '../context/DateToday';
+import { useState, useEffect, useContext } from "react";
+import { TodayContext } from "../context/DateToday";
 
 export const useInfoCovid = () => {
-  const { day } = useContext(TodayContext)
-  const [infoSpain, setInfoSpain] = useState([])
+  const { day } = useContext(TodayContext);
+  const [infoSpain, setInfoSpain] = useState([]);
 
   useEffect(() => {
     const fetching = async () => {
@@ -21,5 +21,5 @@ export const useInfoCovid = () => {
     };
     fetching();
   }, [day]);
-  return[infoSpain]
-}
+  return [infoSpain];
+};

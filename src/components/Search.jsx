@@ -4,33 +4,29 @@ import Graphic from "./Graphic";
 import Spinner from "./Spinner";
 import IconSearch from "../assets/search.svg";
 import { TodayContext } from "../context/DateToday";
-import { fetchRangeDate } from "../helpers/fetchRangeDate";
 import { translation } from "../helpers/TranslationCountry";
 import { FormStyled, InputSubmit, InputText } from "../styles/Search";
+
+import useRangeData from "../hooks/useRangeData";
 
 const Search = () => {
   const { day } = useContext(TodayContext);
 
+  const { isLoading, infoCountry, handleData } = useRangeData();
+
   const [text, setText] = useState("");
   const [startDate, setStartDate] = useState("");
   const [finalDate, setFinalDate] = useState("");
-  const [infoCountry, setInfoCountry] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoading(true);
     if (startDate !== "".trim() && finalDate !== "".trim()) {
       const textLow = text.toLowerCase();
       const country = translation(textLow);
       setText("");
-      fetchRangeDate(country, startDate, finalDate).then((res) => {
-        setInfoCountry(res);
-        setIsLoading(false);
-      });
+      handleData(country, startDate, finalDate);
     } else {
       alert("Escriba el país y las fechas correctamente");
-      setIsLoading(false);
     }
   };
 

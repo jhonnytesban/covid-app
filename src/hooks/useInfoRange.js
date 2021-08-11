@@ -4,17 +4,16 @@ import { TodayContext } from "../context/DateToday";
 const useInfoRange = (initialValue) => {
   const { day } = useContext(TodayContext);
   const [infoRange, setInfoRange] = useState([]);
-  const [countries, setCountries] = useState(initialValue)
-  const [isLoading, setIsLoading] = useState(false)
+  const [countries, setCountries] = useState(initialValue);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleCountry = (country) => {
-    setCountries(country)
-  }
-
+    setCountries(country);
+  };
 
   useEffect(() => {
     const fetchInfoRange = async () => {
-      setIsLoading(true)
+      setIsLoading(true);
       let fecha = new Date().toISOString().slice(0, 7);
       if (day) {
         const res = await fetch(
@@ -25,7 +24,7 @@ const useInfoRange = (initialValue) => {
         const dataArray = await Object.values(dates);
         setInfoRange(dataArray);
       }
-      setIsLoading(false)
+      setIsLoading(false);
     };
     fetchInfoRange();
   }, [day, countries]);

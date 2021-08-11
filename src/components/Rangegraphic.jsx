@@ -4,16 +4,10 @@ import Graphic from "./Graphic";
 import Spinner from "./Spinner";
 
 const Rangegraphic = () => {
-  const {infoRange} = useInfoRange('spain')
+  const { infoRange } = useInfoRange("spain");
 
   return (
-    <>
-      {infoRange.length === 0 ? (
-        <Spinner />
-      ) : (
-        <Graphic info={infoRange} />
-      )}
-    </>
+    <>{infoRange.length === 0 ? <Spinner /> : <Graphic info={infoRange} />}</>
   );
 };
 

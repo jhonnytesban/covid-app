@@ -31,8 +31,11 @@ const Navbar = () => {
             </LinkStyled>
           </ItemStyled>
           <ItemStyled>
-            <LinkStyled to="/countries-by-range" onClick={() => setIsActive(!isActive)}>
-              Búsqueda por países y fecha 
+            <LinkStyled
+              to="/countries-by-range"
+              onClick={() => setIsActive(!isActive)}
+            >
+              Búsqueda por países y fecha
             </LinkStyled>
           </ItemStyled>
         </MenuStyled>
